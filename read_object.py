@@ -180,6 +180,7 @@ def get_tags_dict(file_name):
 
     return tags_dict
 
+
 def get_ids_dict(file_name):
     """Create dictionary of id:set(tags)"""
     # Read file
@@ -200,7 +201,7 @@ def get_ids_dict(file_name):
 
 if __name__ == '__main__':
     file_names = ["data/a_example.txt", "data/b_lovely_landscapes.txt", "data/c_memorable_moments.txt", "data/d_pet_pictures.txt", "data/e_shiny_selfies.txt"]
-    file_names = ["data/a_example.txt"]
+    # file_names = ["data/a_example.txt"]
     for file_name in file_names:
         # Create list of images
         imgs = create_Image(file_name)
