@@ -53,7 +53,7 @@ class slide:
     def tags(self):
         if self.filled:
             if len(self.images) == 2:
-                return self.images[0].tags + self.images[1].tags
+                return self.images[0] + self.images[1]
             else:
                 return self.images[0].tags
         else:
