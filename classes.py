@@ -20,6 +20,31 @@ class Image:
         """Returns minimum number of tags exclusively in one image """
         return min(len(self.tags - other.tags), len(other.tags - self.tags))
 
+
 class slide:
 
-    def __
+    def __init__(self):
+        self.filled = False
+        self.images = []
+
+    def insert(self, image):
+        """Returns True if success, False if incompatible"""
+
+        if not self.filled:
+            if self.images:
+                if image.orientation == 'V':
+                    self.images.append(image)
+                    self.filled = True
+                else:
+                    return False
+            else:
+                self.images.append(image)
+                    if image.orientation == 'H':
+                        self.filled = True
+            return True
+
+    def remove(self, image):
+        """Returns the popped image"""
+        self.images.remove(image)
+        self.filled = False
+        return image
