@@ -25,7 +25,6 @@ if __name__ == '__main__':
     print(len(imgs))
 
     # Create slides
-    # Too long list
     slides = [classes.slide() for i in range(len(imgs))]
 
     count = 0
@@ -44,3 +43,7 @@ if __name__ == '__main__':
         # Store this lonely vertical image
         else:
             lonely = i
+
+    # Delete empty slides
+    del slides[count:]
+
