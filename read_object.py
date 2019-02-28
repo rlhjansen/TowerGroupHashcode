@@ -97,6 +97,9 @@ def create_file(slides, file_name_output):
             # Write line
             f.write(line)
 
+def score_slidelist(slidelist):
+    return sum([slidelist[i-1].score(elem) for i, elem in enumerate(slidelist)])
+
 
 
 def get_nums(file_name):
@@ -165,4 +168,3 @@ if __name__ == '__main__':
 
         # Create output file
         create_file(slides, "results/"+file_name[5:-4]+"order_output.txt")
-    
