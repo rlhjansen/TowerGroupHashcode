@@ -99,16 +99,14 @@ def create_file(slides, file_name_output):
 
 
 if __name__ == '__main__':
-    # file_names = ["data/a_example.txt", "data/b_lovely_landscapes.txt", "data/c_memorable_moments.txt", "data/d_pet_pictures.txt"]
-    file_name = "data/d_pet_pictures.txt"
-    # Create list of images
-    imgs = create_Image(file_name)
-    # Create list of slides in order of the file
-    slides = create_slides(imgs)
-    print(len(imgs), len(slides))
-    print(slides[-2].tags())
-    print(slides[-1].tags())
+    file_names = ["data/a_example.txt", "data/b_lovely_landscapes.txt", "data/c_memorable_moments.txt", "data/d_pet_pictures.txt", "data/e_shiny_selfies.txt"]
+    # file_name = "data/d_pet_pictures.txt"
+    for file_name in file_names:
+        # Create list of images
+        imgs = create_Image(file_name)
+        # Create list of slides in order of the file
+        slides = create_slides(imgs)
 
-    create_file(slides, "results/"+file_name[5:-4]+"_output.txt")
-    print("results/"+file_name[5:-4]+"_output.txt")
+        # Create output file
+        create_file(slides, "results/"+file_name[5:-4]+"order_output.txt")
     
