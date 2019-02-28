@@ -95,8 +95,13 @@ def create_file(slides, file_name_output):
             line += "\n"
             # Write line
             f.write(line)
+<<<<<<< HEAD
 
 
+=======
+        
+        
+>>>>>>> 4b204fb5f7633656d246b41f6a8296113fecb0c5
 
 if __name__ == '__main__':
 
@@ -108,4 +113,10 @@ if __name__ == '__main__':
     print(len(imgs), len(slides))
     print(slides[-2].tags())
     print(slides[-1].tags())
+<<<<<<< HEAD
     create_file(slides, "tryout.txt")
+=======
+
+    create_file(slides, "results/"+file_name[5:-4]+"_output.txt")
+    
+>>>>>>> 4b204fb5f7633656d246b41f6a8296113fecb0c5
