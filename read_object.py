@@ -4,7 +4,7 @@ def create_Image(file_name):
     """Create list of object Image from text file"""
     # Read file
     f = open(file_name, "r")
-    
+
     images = []
     counter = 0
     # Loop over lines
@@ -14,10 +14,12 @@ def create_Image(file_name):
         new_img =  classes.Image(counter, line[0], line[2:])
         images.append(new_img)
         counter += 1
-        
+
     return images
 
-file_name = "data/e_shiny_selfies.txt"
-imgs = create_Image(file_name)
-print(imgs[2].id, imgs[2].tags, imgs[2].tags)
-print(len(imgs))
+if __name__ == '__main__':
+
+    file_name = "data/e_shiny_selfies.txt"
+    imgs = create_Image(file_name)
+    print(imgs[2].id, imgs[2].tags, imgs[2].tags)
+    print(len(imgs))
