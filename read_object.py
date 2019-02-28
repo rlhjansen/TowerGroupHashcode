@@ -9,7 +9,7 @@ def create_Image(file_name):
     images = []
     counter = 0
     # Loop over lines
-    for line in f.readlines():
+    for line in f.readlines()[1:]:
         line = line.replace("\n", "").split(" ")
         # Append Image objects to images
         new_img =  classes.Image(counter, line[0], line[2:])
@@ -33,7 +33,7 @@ def create_slides(imgs):
             slides[count].insert(imgs[i])
             count += 1
         # Insert two verticals if a lonely index is present
-        elif lonely is not False:
+        elif lonely:
             slides[count].insert(imgs[lonely])
             slides[count].insert(imgs[i])
             count += 1
@@ -99,15 +99,16 @@ def create_file(slides, file_name_output):
 def score_slidelist(slidelist)
     return sum([slidelist[i-1].score(elem) for i, elem in enumerate(slidelist)])
 
+
+
 if __name__ == '__main__':
+    file_names = ["data/a_example.txt", "data/b_lovely_landscapes.txt", "data/c_memorable_moments.txt", "data/d_pet_pictures.txt", "data/e_shiny_selfies.txt"]
+    # file_name = "data/d_pet_pictures.txt"
+    for file_name in file_names:
+        # Create list of images
+        imgs = create_Image(file_name)
+        # Create list of slides in order of the file
+        slides = create_slides(imgs)
 
-    file_name = "data/d_pet_pictures.txt"
-    # Create list of images
-    imgs = create_Image(file_name)
-    # Create list of slides in order of the file
-    slides = create_random_slides(imgs)
-    print(len(imgs), len(slides))
-    print(slides[-2].tags())
-    print(slides[-1].tags())
-
-    create_file(slides, "results/"+file_name[5:-4]+"_output.txt")
+        # Create output file
+        create_file(slides, "results/"+file_name[5:-4]+"order_output.txt")
