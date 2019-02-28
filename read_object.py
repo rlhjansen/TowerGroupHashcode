@@ -90,3 +90,4 @@ if __name__ == '__main__':
     print(len(imgs), len(slides))
     print(slides[-2].tags())
     print(slides[-1].tags())
+gitr 
