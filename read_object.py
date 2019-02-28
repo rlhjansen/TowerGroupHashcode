@@ -81,7 +81,7 @@ def create_random_slides(imgs):
 
 def create_file(slides, file_name_output):
     """Write an output file from the slides"""
-    with open(file_name_output, "w") as f: 
+    with open(file_name_output, "w") as f:
         # Write the number of slides
         f.write(str(len(slides))+"\n")
 
@@ -95,8 +95,9 @@ def create_file(slides, file_name_output):
             line += "\n"
             # Write line
             f.write(line)
-        
-        
+
+def score_slidelist(slidelist)
+    return sum([slidelist[i-1].score(elem) for i, elem in enumerate(slidelist)])
 
 if __name__ == '__main__':
 
@@ -110,4 +111,3 @@ if __name__ == '__main__':
     print(slides[-1].tags())
 
     create_file(slides, "results/"+file_name[5:-4]+"_output.txt")
-    
