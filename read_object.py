@@ -17,13 +17,8 @@ def create_Image(file_name):
 
     return images
 
-if __name__ == '__main__':
-
-    file_name = "data/e_shiny_selfies.txt"
-    imgs = create_Image(file_name)
-    print(imgs[2].id, imgs[2].tags, imgs[2].tags)
-    print(len(imgs))
-
+def create_slides(imgs):
+    """Create list of slides from a list of images"""
     # Create slides
     slides = [classes.slide() for i in range(len(imgs))]
 
@@ -46,4 +41,17 @@ if __name__ == '__main__':
 
     # Delete empty slides
     del slides[count:]
+
+    return slides
+
+
+if __name__ == '__main__':
+
+    file_name = "data/e_shiny_selfies.txt"
+    # Create list of images
+    imgs = create_Image(file_name)
+    # Create list of slides in order of the file
+    slides = create_slides(imgs)
+    print(len(imgs), len(slides))
+
 
