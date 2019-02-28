@@ -18,3 +18,6 @@ class Image:
     def __sub__(self, other):
         """Returns minimum number of tags exclusively in one image """
         return min(len(self.tags - other.tags), len(other.tags - self.tags))
+
+class slide:
+    pass
