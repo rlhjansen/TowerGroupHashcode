@@ -13,12 +13,12 @@ class Image:
         self.tags = set(tags)
 
     def __add__(self, other):
-        """Returns number of tags that are in both images"""
-        return len(self.tags & other.tags)
+        """Return tags in both images"""
+        return self.tags | other.tags
 
-    def __sub__(self, other):
-        """Returns minimum number of tags exclusively in one image """
-        return min(len(self.tags - other.tags), len(other.tags - self.tags))
+    # def __sub__(self, other):
+    #     """Returns minimum number of tags exclusively in one image """
+    #     return min(len(self.tags - other.tags), len(other.tags - self.tags))
 
 
 class slide:
@@ -45,6 +45,21 @@ class slide:
 
     def remove(self, image):
         """Returns the popped image"""
+
         self.images.remove(image)
         self.filled = False
         return image
+
+    def tags(self):
+        if self.filled:
+            if len(self.images) == 2:
+                return self.images[0].tags + self.images[1].tags
+            else:
+                return self.images[0].tags
+        else:
+            return set()
+
+
+
+    def score(self, next):
+        pass
