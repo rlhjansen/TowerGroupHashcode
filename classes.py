@@ -67,7 +67,7 @@ class slide:
         else:
             return set()
 
-    def score(self, next):
+    def score(self, other):
         """Returns the score of a slide progression"""
         return min(len(self.tags() - other.tags()), len(other.tags() - self.tags()), len(other.tags() & self.tags()))
 
