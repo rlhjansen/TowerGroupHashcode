@@ -1,3 +1,8 @@
+""" run with python shellsort.py *letter of dataset*
+
+stop optimizing by pressing CTRL+C and open the *letter of dataset*_results.csv
+"""
+
 from read_object import create_Image, create_slides, create_file
 from random import randint
 import sys
