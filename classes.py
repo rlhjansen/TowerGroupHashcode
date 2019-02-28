@@ -51,15 +51,15 @@ class slide:
         return image
 
     def tags(self):
+        """returns all tags """
         if self.filled:
             if len(self.images) == 2:
-                return self.images[0].tags + self.images[1].tags
+                return self.images[0] + self.images[1]
             else:
                 return self.images[0].tags
         else:
             return set()
 
-
-
     def score(self, next):
-        pass
+        """Returns the score of a slide progression"""
+        return min(len(self.tags() - other.tags()), len(other.tags() - self.tags()), len(other.tags() & self.tags()))
