@@ -79,7 +79,25 @@ def create_random_slides(imgs):
     return slides
 
 
+def create_file(slides, file_name_output):
+    """Write an output file from the slides"""
+    with open(file_name_output, "w") as f: 
+        # Write the number of slides
+        f.write(str(len(slides))+"\n")
 
+        # Write per slide the photo id
+        for slide in slides:
+            line = ""
+            for i in range(len(slide.images)):
+                if i > 0:
+                    line += " "
+                line += str(slide.images[i].id)
+            line += "\n"
+            # Write line
+            f.write(line)
+        
+        
+        
 if __name__ == '__main__':
 
     file_name = "data/d_pet_pictures.txt"
@@ -90,3 +108,5 @@ if __name__ == '__main__':
     print(len(imgs), len(slides))
     print(slides[-2].tags())
     print(slides[-1].tags())
+    create_file(slides, "tryout.txt")
+    
