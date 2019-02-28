@@ -9,7 +9,7 @@ def create_Image(file_name):
     images = []
     counter = 0
     # Loop over lines
-    for line in f.readlines():
+    for line in f.readlines()[1:]:
         line = line.replace("\n", "").split(" ")
         # Append Image objects to images
         new_img =  classes.Image(counter, line[0], line[2:])
@@ -99,15 +99,16 @@ def create_file(slides, file_name_output):
         
 
 if __name__ == '__main__':
-
+    # file_names = ["data/a_example.txt", "data/b_lovely_landscapes.txt", "data/c_memorable_moments.txt", "data/d_pet_pictures.txt"]
     file_name = "data/d_pet_pictures.txt"
     # Create list of images
     imgs = create_Image(file_name)
     # Create list of slides in order of the file
-    slides = create_random_slides(imgs)
+    slides = create_slides(imgs)
     print(len(imgs), len(slides))
     print(slides[-2].tags())
     print(slides[-1].tags())
 
     create_file(slides, "results/"+file_name[5:-4]+"_output.txt")
+    print("results/"+file_name[5:-4]+"_output.txt")
     
