@@ -2,9 +2,10 @@ class Image:
     """Image class
        properties:
 
-            orientation (char): 'H' for horizontal 'V' for vertical
-            tags (set): set containing the tags of the image
-            """
+            id (int): identifier number.
+            orientation (char): 'H' for horizontal 'V' for vertical.
+            tags (set): set containing the tags of the image.
+    """
 
     def __init__(self, id, orientation, tags):
         self.id = id
@@ -20,4 +21,5 @@ class Image:
         return min(len(self.tags - other.tags), len(other.tags - self.tags))
 
 class slide:
-    pass
+
+    def __
