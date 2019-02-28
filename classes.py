@@ -1,3 +1,6 @@
+import read_object as ro
+
+
 class Image:
     """Image class
        properties:
@@ -15,6 +18,9 @@ class Image:
     def __add__(self, other):
         """Return tags in both images"""
         return self.tags | other.tags
+
+    def __str__(self):
+        return self.orientation + ' ' + str(self.tags)
 
     # def __sub__(self, other):
     #     """Returns minimum number of tags exclusively in one image """
@@ -39,8 +45,8 @@ class slide:
                     return False
             else:
                 self.images.append(image)
-                    if image.orientation == 'H':
-                        self.filled = True
+                if image.orientation == 'H':
+                    self.filled = True
             return True
 
     def remove(self, image):
@@ -51,7 +57,8 @@ class slide:
         return image
 
     def tags(self):
-        """returns all tags """
+        """returns all tags in slide """
+
         if self.filled:
             if len(self.images) == 2:
                 return self.images[0] + self.images[1]
@@ -60,6 +67,12 @@ class slide:
         else:
             return set()
 
-    def score(self, next):
+    def score(self, other):
         """Returns the score of a slide progression"""
         return min(len(self.tags() - other.tags()), len(other.tags() - self.tags()), len(other.tags() & self.tags()))
+
+
+if __name__ == '__main__':
+    file_name = "data/e_shiny_selfies.txt"
+    imgs = ro.create_Image(file_name)
+    print(imgs[0], imgs[1], imgs[2])
