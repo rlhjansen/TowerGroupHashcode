@@ -23,3 +23,24 @@ if __name__ == '__main__':
     imgs = create_Image(file_name)
     print(imgs[2].id, imgs[2].tags, imgs[2].tags)
     print(len(imgs))
+
+    # Create slides
+    # Too long list
+    slides = [classes.slide() for i in range(len(imgs))]
+
+    count = 0
+    lonely = False
+    # Iterate over images to put them in the slides list
+    for i in range(len(imgs)):
+        # Insert horizontal image
+        if imgs[i].orientation == "H":
+            slides[count].insert(imgs[i])
+            count += 1
+        # Insert two verticals if a lonely index is present
+        elif lonely is not False:
+            slides[count].insert(imgs[lonely])
+            slides[count].insert(imgs[i])
+            count += 1
+        # Store this lonely vertical image
+        else:
+            lonely = i
