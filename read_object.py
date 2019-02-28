@@ -156,10 +156,34 @@ def create_tryout_slides(imgs):
     return slides
 
 
+def get_tags_dict(file_name):
+    """Create list of object Image from text file"""
+    # Read file
+    f = open(file_name, "r")
+
+    tags_dict = {}
+    counter = 0
+    # Loop over lines
+    for line in f.readlines()[1:]:
+        line = line.replace("\n", "").split(" ")
+        
+        # Create dictionary
+        for tag in line[2:]:
+            # Append id to existing key
+            if tag in tags_dict:
+                tags_dict[tag] = tags_dict[tag] | {counter}
+            # Else create new key
+            else:
+                tags_dict[tag] = {counter}
+
+        counter += 1
+
+    return tags_dict
+
 
 if __name__ == '__main__':
     file_names = ["data/a_example.txt", "data/b_lovely_landscapes.txt", "data/c_memorable_moments.txt", "data/d_pet_pictures.txt", "data/e_shiny_selfies.txt"]
-    # file_name = "data/d_pet_pictures.txt"
+    file_names = ["data/a_example.txt"]
     for file_name in file_names:
         # Create list of images
         imgs = create_Image(file_name)
@@ -168,3 +192,5 @@ if __name__ == '__main__':
 
         # Create output file
         create_file(slides, "results/"+file_name[5:-4]+"order_output.txt")
+
+    print(get_tags_dict(file_name))
