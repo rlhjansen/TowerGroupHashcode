@@ -33,7 +33,7 @@ def create_slides(imgs):
             slides[count].insert(imgs[i])
             count += 1
         # Insert two verticals if a lonely index is present
-        elif lonely is not False:
+        elif lonely:
             slides[count].insert(imgs[lonely])
             slides[count].insert(imgs[i])
             count += 1
@@ -81,7 +81,7 @@ def create_random_slides(imgs):
 
 def create_file(slides, file_name_output):
     """Write an output file from the slides"""
-    with open(file_name_output, "w") as f: 
+    with open(file_name_output, "w") as f:
         # Write the number of slides
         f.write(str(len(slides))+"\n")
 
@@ -95,8 +95,8 @@ def create_file(slides, file_name_output):
             line += "\n"
             # Write line
             f.write(line)
-        
-        
+
+
 
 if __name__ == '__main__':
     # file_names = ["data/a_example.txt", "data/b_lovely_landscapes.txt", "data/c_memorable_moments.txt", "data/d_pet_pictures.txt"]
