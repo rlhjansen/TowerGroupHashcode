@@ -17,6 +17,7 @@ def create_Image(file_name):
 
     return images
 
+
 def create_slides(imgs):
     """Create list of slides from a list of images"""
     # Create slides
@@ -35,6 +36,7 @@ def create_slides(imgs):
             slides[count].insert(imgs[lonely])
             slides[count].insert(imgs[i])
             count += 1
+            lonely = False
         # Store this lonely vertical image
         else:
             lonely = i
@@ -47,11 +49,14 @@ def create_slides(imgs):
 
 if __name__ == '__main__':
 
-    file_name = "data/e_shiny_selfies.txt"
+    file_name = "data/d_pet_pictures.txt"
     # Create list of images
     imgs = create_Image(file_name)
     # Create list of slides in order of the file
     slides = create_slides(imgs)
     print(len(imgs), len(slides))
+    print(slides[-2].tags())
+    print(slides[-1].tags())
+
 
 
