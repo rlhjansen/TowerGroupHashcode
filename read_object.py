@@ -47,6 +47,7 @@ def create_slides(imgs):
 
     return slides
 
+
 def create_random_slides(imgs):
     """Create list of slides from a list of images"""
     # Create slides
@@ -95,6 +96,61 @@ def create_file(slides, file_name_output):
             line += "\n"
             # Write line
             f.write(line)
+
+
+
+def get_nums(file_name):
+    """Create list of object Image from text file"""
+    # Read file
+    f = open(file_name, "r")
+
+    ids = []
+    nums = []
+    counter = 0
+    # Loop over lines
+    for line in f.readlines()[1:]:
+        line = line.replace("\n", "").split(" ")
+        # Append Image objects to images
+        new_img =  classes.Image(counter, line[0], line[2:])
+        ids.append(counter)
+        nums.append(len(new_img.tags))
+        counter += 1
+
+    return ids, nums
+
+
+def create_tryout_slides(imgs):
+    """Create list of slides from a list of images"""
+    # Create slides
+    slides = [classes.slide() for i in range(len(imgs))]
+
+    ids, nums = get_nums(imgs)
+
+    order = [i for i in range(len(slides))]
+    random.shuffle(order)
+
+    count = 0
+    lonely = False
+    # Iterate over images to put them in the slides list
+    for i in order:
+        # Insert horizontal image
+        if imgs[i].orientation == "H":
+            slides[count].insert(imgs[i])
+            count += 1
+        # Insert two verticals if a lonely index is present
+        elif lonely is not False:
+            slides[count].insert(imgs[lonely])
+            slides[count].insert(imgs[i])
+            count += 1
+            lonely = False
+        # Store this lonely vertical image
+        else:
+            lonely = i
+
+    # Delete empty slides
+    del slides[count:]
+
+    return slides
 
 
 
