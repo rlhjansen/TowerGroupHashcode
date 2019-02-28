@@ -1,6 +1,6 @@
 from read_object import create_Image, create_slides, create_file
 from random import randint
-
+import sys
 
 
 fa = "data/a_example.txt"
@@ -52,7 +52,9 @@ class sorta_shellsort:
         except:
             create_file(self.slides, self.dataset+"_results.csv")
 
-slides_b = create_slides(create_Image(fb))
-ssssb = sorta_shellsort(slides_b, "b")
-ssssb.run_alg()
-print(ssssb.score)
+if __name__ == '__main__':
+    file = sys.argv[1]
+    slides_b = create_slides(create_Image(eval("f" + file)))
+    ssssb = sorta_shellsort(slides_b, file)
+    ssssb.run_alg()
+    print(ssssb.score)

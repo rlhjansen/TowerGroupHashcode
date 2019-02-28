@@ -96,7 +96,7 @@ def create_file(slides, file_name_output):
             # Write line
             f.write(line)
 
-def score_slidelist(slidelist)
+def score_slidelist(slidelist):
     return sum([slidelist[i-1].score(elem) for i, elem in enumerate(slidelist)])
 
 
